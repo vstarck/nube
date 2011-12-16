@@ -19,7 +19,8 @@
         }
 
         pre {
-            float: left;
+            font-size: 11px;
+            font-family: Consolas, monospace;
         }
 
         .canvas-container {
@@ -34,7 +35,42 @@
 
 </div>
 <div id="text">
-    <h1>Texto tomado de Eloquent JavaScript</h1>
+    <h2>Code</h2>
+    <pre>
+        function t() {
+            return document.getElementById('src').innerHTML.trim();
+        }
+
+        var n = new Nube({
+            text: t(),
+            // canvas width
+            width: 800,
+            // set each word padding
+            padding: function (word, fontSize, fabricObject) {
+                return {
+                    top: -fontSize * 0.2,
+                    right: -fontSize * 0.2,
+                    bottom: -fontSize * 0.2,
+                    left: fontSize * 0.2
+                };
+            },
+            fontSizeMax: 150,
+            fontSizeMin: 20,
+            // grow horizontally (stepX > stepY)
+            stepX: 1.5,
+            stepY: 1,
+            // ignore common words
+            filter: function (word, count) {
+                var dict = ['the', 'that', 'and'];
+
+                return count > 1 && word.length > 2 && dict.indexOf(word) == -1;
+            }
+        });
+
+        n.renderTo(document.getElementById('container'));
+    </pre>
+    <h2>Text from Eloquent JavaScript</h2>
+
     <p id="src">
         JavaScript is the language that is, at the moment, mostly being used to do all kinds of clever and horrible
         things with pages on the World Wide Web. Some people claim that the next version of JavaScript will become an
@@ -87,15 +123,15 @@
     </p>
 </div>
 <script>
-
-
     function t() {
         return document.getElementById('src').innerHTML.trim();
     }
 
     var n = new Nube({
         text: t(),
+        // canvas width
         width: 800,
+        // set each word padding
         padding: function (word, fontSize, fabricObject) {
             return {
                 top: -fontSize * 0.2,
@@ -106,8 +142,10 @@
         },
         fontSizeMax: 150,
         fontSizeMin: 20,
+        // grow horizontally (stepX > stepY)
         stepX: 1.5,
         stepY: 1,
+        // ignore common words
         filter: function (word, count) {
             var dict = ['the', 'that', 'and'];
 

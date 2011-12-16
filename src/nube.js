@@ -12,6 +12,8 @@ var Nube = function (opts) {
     };
 };
 
+Nube.version = '0.1';
+
 Nube.override = function (target, src) {
     if (!src) {
         return target;
