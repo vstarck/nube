@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nube.js</title>
+    <script type="text/javascript" src="../src/nube.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/dist/all.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/36_lobster.cufonfonts_latin.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/CrashCTT_400.font.js"></script>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .status {
+            position: fixed;
+            top: 5px;
+            left: 5px;
+        }
+
+        pre {
+            float: left;
+        }
+
+        .canvas-container {
+            border: solid 1px #000;
+            margin: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<div id="text">
+    <h1>Texto tomado de Eloquent JavaScript</h1>
+    <p id="src">
+        JavaScript is the language that is, at the moment, mostly being used to do all kinds of clever and horrible
+        things with pages on the World Wide Web. Some people claim that the next version of JavaScript will become an
+        important language for other tasks too. I am unsure whether that will happen, but if you are interested in
+        programming, JavaScript is definitely a useful language to learn. Even if you do not end up doing much web
+        programming, the mind-bending programs I will show you in this book will always stay with you, haunt you, and
+        influence the programs you write in other languages.<br/><br/>
+        There are those who will say terrible things about JavaScript. Many of these things are true. When I was for the
+        first time required to write something in JavaScript, I quickly came to despise the language. It would accept
+        almost anything I typed, but interpret it in a way that was completely different from what I meant. This had a
+        lot to do with the fact that I did not have a clue what I was doing, but there is also a real issue here:
+        JavaScript is ridiculously liberal in what it allows. The idea behind this design was that it would make
+        programming in JavaScript easier for beginners. In actuality, it mostly makes finding problems in your programs
+        harder, because the system will not point them out to you.<br/><br/>
+        However, the flexibility of the language is also an advantage. It leaves space for a lot of techniques that are
+        impossible in more rigid languages, and it can be used to overcome some of JavaScript's shortcomings. After
+        learning it properly, and working with it for a while, I have really learned to like this language.<br/><br/>
+        Contrary to what the name suggests, JavaScript has very little to do with the programming language named Java.
+        The similar name was inspired by marketing considerations, rather than good judgement. In 1995, when JavaScript
+        was introduced by Netscape, the Java language was being heavily marketed and gaining in popularity. Apparently,
+        someone thought it a good idea to try and ride along on this marketing. Now we are stuck with the
+        name.<br/><br/>
+        Related to JavaScript is a thing called ECMAScript. When browsers other than Netscape started to support
+        JavaScript, or something that looked like it, a document was written to describe precisely how the language
+        should work. The language described in this document is called ECMAScript, after the organisation that
+        standardised it.<br/><br/>
+        ECMAScript describes a general-purpose programming language, and does not say anything about the integration of
+        this language in an Internet browser. JavaScript is ECMAScript plus extra tools for dealing with Internet pages
+        and browser windows.<br/><br/>
+        A few other pieces of software use the language described in the ECMAScript document. Most importantly, the
+        ActionScript language used by Flash is based on ECMAScript (though it does not precisely follow the standard).
+        Flash is a system for adding things that move and make lots of noise to web-pages. Knowing JavaScript won't hurt
+        if you ever find yourself learning to build Flash movies.<br/><br/>
+        JavaScript is still evolving. Since this book came out, ECMAScript 5 has been released, which is compatible with
+        the version described here, but adds some of the functionality we will be writing ourselves as built-in methods.
+        The newest generation of browsers provides this expanded version of JavaScript. As of 2011, 'ECMAScript
+        harmony', a more radical extension of the language, is in the process of being standardised. You should not
+        worry too much about these new versions making the things you learn from this book obsolete. For one thing, they
+        will be an extension of the language we have now, so almost everything written in this book will still
+        hold.<br/><br/>
+        Most chapters in this book contain quite a lot of code1. In my experience, reading and writing code is an
+        important part of learning to program. Try to not just glance over these examples, but read them attentively and
+        understand them. This can be slow and confusing at first, but you will quickly get the hang of it. The same goes
+        for the exercises. Don't assume you understand them until you've actually written a working solution.<br/><br/>
+        Because of the way the web works, it is always possible to look at the JavaScript programs that people put in
+        their web-pages. This can be a good way to learn how some things are done. Because most web programmers are not
+        'professional' programmers, or consider JavaScript programming so uninteresting that they never properly learned
+        it, a lot of the code you can find like this is of a very bad quality. When learning from ugly or incorrect
+        code, the ugliness and confusion will propagate into your own code, so be careful who you learn from.<br/><br/>
+    </p>
+</div>
+<script>
+
+
+    function t() {
+        return document.getElementById('src').innerHTML.trim();
+    }
+
+    var n = new Nube({
+        text: t(),
+        width: 800,
+        padding: function (word, fontSize, fabricObject) {
+            return {
+                top: -fontSize * 0.2,
+                right: -fontSize * 0.2,
+                bottom: -fontSize * 0.2,
+                left: fontSize * 0.2
+            };
+        },
+        fontSizeMax: 150,
+        fontSizeMin: 20,
+        stepX: 1.5,
+        stepY: 1,
+        filter: function (word, count) {
+            var dict = ['the', 'that', 'and'];
+
+            return count > 1 && word.length > 2 && dict.indexOf(word) == -1;
+        }
+    });
+
+    n.renderTo(document.getElementById('container'));
+</script>
+</body>
+</html>

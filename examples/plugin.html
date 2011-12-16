@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nube.js - Plugin Example</title>
+    <script type="text/javascript" src="../vendor/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../src/nube.js"></script>
+    <script type="text/javascript" src="../src/jquery.nube.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/dist/all.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/36_lobster.cufonfonts_latin.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/CrashCTT_400.font.js"></script>
+    <script>
+        $(function () {
+            $('.tagcloud').nube({
+                height: 350,
+                hideOriginal: true,
+                padding: function (word, fontSize) {
+                    return {
+                        top: -1,
+                        right: -1,
+                        bottom: -1,
+                        left: -0.05 * fontSize
+                    }
+                },
+                onHoverIn: function (target, refresh) {
+                    target._originalColor = target.get('fill');
+                    target.setFill('#f00');
+                    refresh();
+                },
+                onHoverOut: function (target, refresh) {
+                    target.setFill(target._originalColor);
+                    refresh();
+                },
+                colors: [
+                    '#bbb',
+                    '#999',
+                    '#777',
+                    '#555',
+                    '#333',
+                    '#111'
+                ]
+            });
+        })
+        ;
+    </script>
+    <style>
+        .tagcloud {
+            width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="tagcloud">
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-37"
+       href="http://blog.aijoona.com/tag/apache/">Apache</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-27" href="http://blog.aijoona.com/tag/apple/">Apple</a>
+    <a style="font-size: 13.347222222222pt;" title="6 temas" class="tag-link-3"
+       href="http://blog.aijoona.com/tag/browser/">Browsers</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-22"
+       href="http://blog.aijoona.com/tag/buenas-practicas/">Buenas Practicas</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-4"
+       href="http://blog.aijoona.com/tag/chrome/">Chrome</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-54" href="http://blog.aijoona.com/tag/criptografia/">Criptografia</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-9" href="http://blog.aijoona.com/tag/css/">CSS</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-20"
+       href="http://blog.aijoona.com/tag/dailyjs/">DailyJS</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-49"
+       href="http://blog.aijoona.com/tag/desafios/">Desafios</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-23" href="http://blog.aijoona.com/tag/documentacion/">Documentacion</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-40" href="http://blog.aijoona.com/tag/dom-monster/">DOM
+        Monster</a>
+    <a style="font-size: 12.666666666667pt;" title="5 temas" class="tag-link-33"
+       href="http://blog.aijoona.com/tag/extjs/">ExtJS</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-13"
+       href="http://blog.aijoona.com/tag/firefox/">Firefox</a>
+    <a style="font-size: 14.805555555556pt;" title="9 temas" class="tag-link-28"
+       href="http://blog.aijoona.com/tag/frameworks/">Frameworks</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-1" href="http://blog.aijoona.com/tag/general/">General</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-19" href="http://blog.aijoona.com/tag/github/">GitHub</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-25"
+       href="http://blog.aijoona.com/tag/google/">Google</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-32" href="http://blog.aijoona.com/tag/hacks/">Hacks</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-6"
+       href="http://blog.aijoona.com/tag/html/">HTML</a>
+    <a style="font-size: 13.347222222222pt;" title="6 temas" class="tag-link-7"
+       href="http://blog.aijoona.com/tag/html5/">HTML5</a>
+    <a style="font-size: 14.805555555556pt;" title="9 temas" class="tag-link-36"
+       href="http://blog.aijoona.com/tag/humor/">Humor</a>
+    <a style="font-size: 11.888888888889pt;" title="4 temas" class="tag-link-30"
+       href="http://blog.aijoona.com/tag/internet-explorer/">Internet Explorer</a>
+    <a style="font-size: 22pt;" title="54 temas" class="tag-link-8" href="http://blog.aijoona.com/tag/javascript/">Javascript</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-10"
+       href="http://blog.aijoona.com/tag/jquery/">jQuery</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-43" href="http://blog.aijoona.com/tag/librerias/">Librerias</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-38" href="http://blog.aijoona.com/tag/libros/">Libros</a>
+    <a style="font-size: 12.666666666667pt;" title="5 temas" class="tag-link-51"
+       href="http://blog.aijoona.com/tag/logica/">Logica</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-42" href="http://blog.aijoona.com/tag/micro-frameworks/">Micro
+        Frameworks</a>
+    <a style="font-size: 10.916666666667pt;" title="3 temas" class="tag-link-24"
+       href="http://blog.aijoona.com/tag/microsoft/">Microsoft</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-29" href="http://blog.aijoona.com/tag/mozilla/">Mozilla</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-11" href="http://blog.aijoona.com/tag/node/">node</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-14" href="http://blog.aijoona.com/tag/opera/">Opera</a>
+    <a style="font-size: 12.666666666667pt;" title="5 temas" class="tag-link-17"
+       href="http://blog.aijoona.com/tag/opinion/">Opinion</a>
+    <a style="font-size: 15.194444444444pt;" title="10 temas" class="tag-link-35"
+       href="http://blog.aijoona.com/tag/patrones/">Patrones</a>
+    <a style="font-size: 15.194444444444pt;" title="10 temas" class="tag-link-39"
+       href="http://blog.aijoona.com/tag/patterns/">Patterns</a>
+    <a style="font-size: 13.347222222222pt;" title="6 temas" class="tag-link-31"
+       href="http://blog.aijoona.com/tag/performance/">Performance</a>
+    <a style="font-size: 10.916666666667pt;" title="3 temas" class="tag-link-18"
+       href="http://blog.aijoona.com/tag/php/">PHP</a>
+    <a style="font-size: 18.986111111111pt;" title="26 temas" class="tag-link-21"
+       href="http://blog.aijoona.com/tag/programacion/">Programacion</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-26"
+       href="http://blog.aijoona.com/tag/safari/">Safari</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-41" href="http://blog.aijoona.com/tag/tutorial/">Tutorial</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-34"
+       href="http://blog.aijoona.com/tag/twitter/">Twitter</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-15" href="http://blog.aijoona.com/tag/websockets/">WebSockets</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-45"
+       href="http://blog.aijoona.com/tag/windows/">Windows</a>
+    <a style="font-size: 8pt;" title="1 tema" class="tag-link-16" href="http://blog.aijoona.com/tag/wordpress/">WordPress</a>
+    <a style="font-size: 9.75pt;" title="2 temas" class="tag-link-48" href="http://blog.aijoona.com/tag/xkcd/">xkcd</a>
+</div>
+</body>
+</html>
