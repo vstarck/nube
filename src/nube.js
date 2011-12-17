@@ -299,7 +299,7 @@ Nube.prototype.collides = function (fabricObject) {
 };
 
 Nube.prototype.getFabricObjectCoords = function (fabricObject) {
-    var isRotated, top, left, height, width, padding;
+    var isRotated, top, left, height, width, margin;
 
     isRotated = fabricObject.get('angle') != 0;
 
@@ -309,13 +309,13 @@ Nube.prototype.getFabricObjectCoords = function (fabricObject) {
     height = isRotated ? fabricObject.get('width') : fabricObject.get('height');
     width = isRotated ? fabricObject.get('height') : fabricObject.get('width');
 
-    padding = this.padding(fabricObject.get('text'), fabricObject.get('fontSize'), fabricObject);
+    margin = this.setWordMargin(fabricObject.get('text'), fabricObject.get('fontSize'), fabricObject);
 
     return {
-        x1: left - width / 2 - padding.left,
-        y1: top - height / 2 - padding.top,
-        x2: left + width / 2 + padding.right,
-        y2: top + height / 2 + padding.bottom
+        x1: left - width / 2 - margin.left,
+        y1: top - height / 2 - margin.top,
+        x2: left + width / 2 + margin.right,
+        y2: top + height / 2 + margin.bottom
     };
 };
 
@@ -362,7 +362,7 @@ Nube.prototype.addWord = function (word, scale, record) {
     p.colors = ['#000000', '#FF0000', '#00FF00', '#0000FF'];
     p.fonts = ['CrashCTT_400'];
     p.allowRotated = false;
-    p.padding = function (text, fontSize, fabricObject) {
+    p.setWordMargin = function (text, fontSize, fabricObject) {
         return {
             top: 0,
             right: 0,
