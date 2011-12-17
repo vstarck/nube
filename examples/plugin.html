@@ -40,7 +40,11 @@
                 ],
                 fonts: [
                     'Lobster 1.3'
-                ]
+                ],
+                preRedirect: function(url, rel) {
+                    $('.status').html(url);
+                    return false;
+                }
             });
         })
         ;
@@ -53,6 +57,8 @@
     </style>
 </head>
 <body>
+<h1>jquery.nube.js preview</h1>
+<div class="status"></div>
 <div class="tagcloud">
     <a style="font-size: 8pt;" title="1 tema" class="tag-link-37"
        href="http://blog.aijoona.com/tag/apache/">Apache</a>

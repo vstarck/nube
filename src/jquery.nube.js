@@ -1,5 +1,5 @@
 (function ($) {
-    function digest(elements) {
+    function digest(elements, opts) {
         return elements.map(function () {
             var $this, fontSize, record;
 
@@ -14,7 +14,9 @@
 
             if ($this.is('a')) {
                 record.click = function () {
-                    window.open($this.attr('href'));
+                    if(!opts || opts.preRedirect && opts.preRedirect($this.attr('href'), $this.attr('rel'))) {
+                        window.open($this.attr('href'), $this.attr('rel'));
+                    }
                 };
             }
 
@@ -33,7 +35,7 @@
             return $(this).children().size() == 0
         });
 
-        opts.data = digest(elements).sort(function (one, another) {
+        opts.data = digest(elements, opts).sort(function (one, another) {
             return one.fontSize - another.fontSize
         });
 
