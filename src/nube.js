@@ -1,3 +1,7 @@
+// nube.js
+// (c) 2011 Valentin Starck
+// nube.js may be freely distributed under the MIT license. (see README.md)
+
 var Nube = function (opts) {
     Nube.override(this, opts);
 
