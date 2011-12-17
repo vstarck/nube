@@ -45,8 +45,8 @@
             text: t(),
             // canvas width
             width: 800,
-            // set each word padding
-            padding: function (word, fontSize, fabricObject) {
+            // set each word margin
+            setWordMargin: function (word, fontSize, fabricObject) {
                 return {
                     top: -fontSize * 0.2,
                     right: -fontSize * 0.2,
@@ -131,8 +131,8 @@
         text: t(),
         // canvas width
         width: 800,
-        // set each word padding
-        padding: function (word, fontSize, fabricObject) {
+        // set each word margin
+        setWordMargin: function (word, fontSize, fabricObject) {
             return {
                 top: -fontSize * 0.2,
                 right: -fontSize * 0.2,

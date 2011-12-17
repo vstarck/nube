@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nube.js - Word cloud</title>
+    <script type="text/javascript" src="../vendor/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../src/nube.js"></script>
+    <script type="text/javascript" src="../src/jquery.nube.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/dist/all.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/Terminator_Cyr.font.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/Vampire95.font.js"></script>
+    <script type="text/javascript" src="../vendor/fabric/lib/fonts/Modernist_One_400.font.js"></script>
+    <style>
+        textarea, input {
+            border-radius: 2px;
+            border: solid 1px #555;
+        }
+
+        textarea {
+            height: 400px;
+            width: 600px;
+        }
+
+        .controls {
+            width: 605px;
+        }
+
+        .controls, .placeholder {
+            float: left;
+        }
+
+        .placeholder {
+            border: solid 1px #555;
+            width: 600px;
+            height: 600px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="controls">
+    <textarea>As programs get bigger, they also become more complex and harder to understand. We all think ourselves
+        pretty clever, of course, but we are mere human beings, and even a moderate amount of chaos tends to baffle us.
+        And then it all goes downhill. Working on something you do not really understand is a bit like cutting random
+        wires on those time-activated bombs they always have in movies. If you are lucky, you might get the right one ―
+        especially if you are the hero of the movie and strike a suitably dramatic pose ― but there is always the
+        possibility of blowing everything up.
+
+        Admittedly, in most cases, breaking a program does not cause any large explosions. But when a program, by
+        someone's ignorant tinkering, has degenerated into a ramshackle mass of errors, reshaping it into something
+        sensible is a terrible labour ― sometimes you might just as well start over.
+
+        Thus, the programmer is always looking for ways to keep the complexity of his programs as low as possible. An
+        important way to do this is to try and make code more abstract. When writing a program, it is easy to get
+        sidetracked into small details at every point. You come across some little issue, and you deal with it, and then
+        proceed to the next little problem, and so on. This makes the code read like a grandmother's tale.
+
+        Yes, dear, to make pea soup you will need split peas, the dry kind. And you have to soak them at least for a
+        night, or you will have to cook them for hours and hours. I remember one time, when my dull son tried to make
+        pea soup. Would you believe he hadn't soaked the peas? We almost broke our teeth, all of us. Anyway, when you
+        have soaked the peas, and you'll want about a cup of them per person, and pay attention because they will expand
+        a bit while they are soaking, so if you aren't careful they will spill out of whatever you use to hold them, so
+        also use plenty water to soak in, but as I said, about a cup of them, when they are dry, and after they are
+        soaked you cook them in four cups of water per cup of dry peas. Let it simmer for two hours, which means you
+        cover it and keep it barely cooking, and then add some diced onions, sliced celery stalk, and maybe a carrot or
+        two and some ham. Let it all cook for a few minutes more, and it is ready to eat.
+
+        Another way to describe this recipe:
+
+        Per person: one cup dried split peas, half a chopped onion, half a carrot, a celery stalk, and optionally ham.
+
+        Soak peas overnight, simmer them for two hours in four cups of water (per person), add vegetables and ham, and
+        cook for ten more minutes.
+
+        This is shorter, but if you don't know how to soak peas you'll surely screw up and put them in too little water.
+        But how to soak peas can be looked up, and that is the trick. If you assume a certain basic knowledge in the
+        audience, you can talk in a language that deals with bigger concepts, and express things in a much shorter and
+        clearer way. This, more or less, is what abstraction is.
+
+        How is this far-fetched recipe story relevant to programming? Well, obviously, the recipe is the program.
+        Furthermore, the basic knowledge that the cook is supposed to have corresponds to the functions and other
+        constructs that are available to the programmer. If you remember the introduction of this book, things like
+        while make it easier to build loops, and in chapter 4 we wrote some simple functions in order to make other
+        functions shorter and more straightforward. Such tools, some of them made available by the language itself,
+        others built by the programmer, are used to reduce the amount of uninteresting details in the rest of the
+        program, and thus make that program easier to work with.
+        Functional programming, which is the subject of this chapter, produces abstraction through clever ways of
+        combining functions. A programmer armed with a repertoire of fundamental functions and, more importantly, the
+        knowledge on how to use them, is much more effective than one who starts from scratch. Unfortunately, a standard
+        JavaScript environment comes with deplorably few essential functions, so we have to write them ourselves or,
+        which is often preferable, make use of somebody else's code (more on that in chapter 9).
+
+        There are other popular approaches to abstraction, most notably object-oriented programming, the subject of
+        chapter 8.
+    </textarea>
+    <button>Nubify!</button>
+</div>
+<div class="placeholder"></div>
+<div class="clear"></div>
+<script>
+    function nubify() {
+        $("button").attr('disabled', true)
+        var n = new Nube({
+            text: $('textarea').val(),
+            // canvas width
+            width: 600,
+            height: 600,
+            // ignore common words
+            filter: function (word, count) {
+                return count > 1 && word.length > 2;
+            },
+            fontSizeMax: 80,
+            onComplete: function () {
+                alert('Complete!');
+                $("button").attr('disabled', false)
+            },
+            fonts: ['Terminator_Cyr', 'Vampire95', 'Modernist_One_400'],
+            colors: ['#000', '#222', '#444', '#666', '#888', '#f00' ]
+        });
+
+        var placeholder = $('.placeholder');
+
+        placeholder.html('');
+
+        n.renderTo(placeholder.get(0));
+    }
+
+    $(function () {
+        $("button").attr('disabled', false)
+        $('button').click(nubify);
+    });
+</script>
+</body>
+</html>

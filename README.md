@@ -12,3 +12,4 @@ nube.js is small library for generating word clouds using canvas via fabric.js a
 - Build a custom (and lightweight) fabric.js
 - Functional tests
 - jquery.nube.js
+- Build to a single file
