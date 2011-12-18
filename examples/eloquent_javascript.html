@@ -64,7 +64,8 @@
                 var dict = ['the', 'that', 'and'];
 
                 return count > 1 && word.length > 2 && dict.indexOf(word) == -1;
-            }
+            },
+            interactive: true
         });
 
         n.renderTo(document.getElementById('container'));
@@ -131,26 +132,28 @@
         text: t(),
         // canvas width
         width: 800,
-        // set each word margin
-        setWordMargin: function (word, fontSize, fabricObject) {
-            return {
-                top: -fontSize * 0.2,
-                right: -fontSize * 0.2,
-                bottom: -fontSize * 0.2,
-                left: fontSize * 0.2
-            };
-        },
-        fontSizeMax: 150,
+// set each word margin
+setWordMargin: function (word, fontSize, fabricObject) {
+    return {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        // Expandimos el lado izquierdo
+        left: fontSize * 0.2
+    };
+},
+        fontSizeMax: 100,
         fontSizeMin: 20,
         // grow horizontally (stepX > stepY)
-        stepX: 1.5,
+        stepX: 2,
         stepY: 1,
         // ignore common words
         filter: function (word, count) {
             var dict = ['the', 'that', 'and'];
 
             return count > 1 && word.length > 2 && dict.indexOf(word) == -1;
-        }
+        },
+        interactive: true
     });
 
     n.renderTo(document.getElementById('container'));

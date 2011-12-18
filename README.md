@@ -11,6 +11,7 @@ nube.js is small library for generating word clouds using canvas via fabric.js a
 ### Examples
 
 - <a href="http://nubejs.aijoona.com/examples/basic">Basic</a>
+- <a href="http://nubejs.aijoona.com/examples/export">Export to image</a>
 - <a href="http://nubejs.aijoona.com/examples/textarea">Interactive</a> (work in progress)
 - <a href="http://nubejs.aijoona.com/examples/jquery_plugin">jquery.nube.js</a> (work in progress)
 
@@ -21,3 +22,4 @@ nube.js is small library for generating word clouds using canvas via fabric.js a
 - Functional tests
 - Complete jquery.nube.js
 - Optimize text position search
+- Add support for images

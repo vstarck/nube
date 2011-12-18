@@ -112,7 +112,7 @@ Nube.prototype.createFabricInstance = function () {
     element.appendChild(canvas);
 
     this.fabric = fabricInstance = new fabric.Canvas(canvas, {
-        selection: this.allowSelection
+        selection: this.interactive
     });
 
     fabricInstance.findTarget = (function (originalFn) {
@@ -160,7 +160,7 @@ Nube.prototype.initEvents = function () {
 Nube.prototype.renderTo = function (element) {
     var self, fabricInstance;
 
-    if(element) {
+    if (element) {
         this.wrapper = element;
     }
 
@@ -170,7 +170,7 @@ Nube.prototype.renderTo = function (element) {
 
     this.initEvents();
 
-    if (!this.allowSelection) {
+    if (!this.interactive) {
         fabricInstance.HOVER_CURSOR = 'arrow';
     }
 
@@ -241,17 +241,17 @@ Nube.prototype.createWord = function (word, scale, record) {
         left: this.width / 2,
         top: this.height / 2,
         angle: angle,
-        selectable: this.allowSelection
+        selectable: this.interactive
     });
 
-    fabricObject.hasControls = this.allowManipulation;
-    fabricObject.hasBorders = this.allowManipulation;
+    fabricObject.hasControls = this.interactive;
+    fabricObject.hasBorders = this.interactive;
 
-    fabricObject.lockRotation = !this.allowManipulation;
-    fabricObject.lockScalingX = !this.allowManipulation;
-    fabricObject.lockScalingY = !this.allowManipulation;
-    fabricObject.lockMovementX = !this.allowManipulation;
-    fabricObject.lockMovementY = !this.allowManipulation;
+    fabricObject.lockRotation = !this.interactive;
+    fabricObject.lockScalingX = !this.interactive;
+    fabricObject.lockScalingY = !this.interactive;
+    fabricObject.lockMovementX = !this.interactive;
+    fabricObject.lockMovementY = !this.interactive;
 
     fabricObject.click = record.click || function () {
     };
@@ -358,6 +358,14 @@ Nube.prototype.addWord = function (word, scale, record) {
     this.fabric.renderAll();
 };
 
+Nube.prototype.toDataURL = function () {
+    if (this.fabric) {
+        return this.fabric.toDataURL();
+    }
+
+    return null;
+};
+
 // Options
 (function (p) {
     p.width = 500;
@@ -381,8 +389,7 @@ Nube.prototype.addWord = function (word, scale, record) {
     p.stepY = 1;
     p.fontSizeMax = 100;
     p.fontSizeMin = 15;
-    p.allowSelection = false;
-    p.allowManipulation = false;
+    p.interactive = false;
 
     p.onHoverIn = function (fabricObject, refresh) {
     };
@@ -403,7 +410,7 @@ Nube.batch = function (fn, opts) {
     };
 
     loop = opts.loop || 100;
-    timeout = opts.timeout || 100;
+    timeout = opts.timeout || 50;
 
     (function r(args) {
         var i, c, init;
