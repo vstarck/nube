@@ -259,9 +259,11 @@ Nube.prototype.createWord = function (word, scale, record) {
     return fabricObject;
 };
 
-Nube.prototype.objectsCollide = function (one, another) {
-    one = this.getFabricObjectCoords(one);
-    another = this.getFabricObjectCoords(another);
+Nube.prototype.objectsCollide = function (objectA, objectB) {
+    var one, another;
+
+    one = this.getFabricObjectCoords(objectA);
+    another = this.getFabricObjectCoords(objectB);
 
     if (one.x1 <= another.x1 && another.x1 <= one.x2) {
         if (one.y1 <= another.y1 && another.y1 <= one.y2) {
