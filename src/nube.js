@@ -241,7 +241,7 @@ Nube.prototype.createWord = function (word, scale, record) {
         left: this.width / 2,
         top: this.height / 2,
         angle: angle,
-        selectable: this.interactive
+        selectable: this.interactive || this.clickable
     });
 
     fabricObject.hasControls = this.interactive;
@@ -392,6 +392,7 @@ Nube.prototype.toDataURL = function () {
     p.fontSizeMax = 100;
     p.fontSizeMin = 15;
     p.interactive = false;
+    p.clickable = false;
 
     p.onHoverIn = function (fabricObject, refresh) {
     };
