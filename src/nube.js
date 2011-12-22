@@ -6,13 +6,13 @@ var Nube = function (opts) {
     Nube.override(this, opts);
 
     this.max = {
-        x: 0,
-        y: this.fontSizeMax
+        x:0,
+        y:this.fontSizeMax
     };
 
     this.min = {
-        x: 0,
-        y: this.fontSizeMin
+        x:0,
+        y:this.fontSizeMin
     };
 };
 
@@ -57,7 +57,7 @@ Nube.prototype.tokenize = function (text) {
         current = current.toLowerCase();
 
         if (!(current in memo)) {
-            memo[current] = { word: current, scale: 0};
+            memo[current] = { word:current, scale:0};
         }
 
         memo[current].scale++;
@@ -78,13 +78,13 @@ Nube.prototype.tokenize = function (text) {
     });
 
     this.min = {
-        x: list[0].scale,
-        y: this.fontSizeMin
+        x:list[0].scale,
+        y:this.fontSizeMin
     };
 
     this.max = {
-        x: list[list.length - 1].scale,
-        y: this.fontSizeMax
+        x:list[list.length - 1].scale,
+        y:this.fontSizeMax
     };
 
     return list;
@@ -112,7 +112,7 @@ Nube.prototype.createFabricInstance = function () {
     element.appendChild(canvas);
 
     this.fabric = fabricInstance = new fabric.Canvas(canvas, {
-        selection: this.interactive
+        selection:this.interactive
     });
 
     fabricInstance.findTarget = (function (originalFn) {
@@ -120,15 +120,15 @@ Nube.prototype.createFabricInstance = function () {
             var target = originalFn.apply(this, arguments);
             if (target) {
                 if (this._hoveredTarget !== target) {
-                    fabricInstance.fire('object:over', { target: target });
+                    fabricInstance.fire('object:over', { target:target });
                     if (this._hoveredTarget) {
-                        fabricInstance.fire('object:out', { target: this._hoveredTarget });
+                        fabricInstance.fire('object:out', { target:this._hoveredTarget });
                     }
                     this._hoveredTarget = target;
                 }
             }
             else if (this._hoveredTarget) {
-                fabricInstance.fire('object:out', { target: this._hoveredTarget });
+                fabricInstance.fire('object:out', { target:this._hoveredTarget });
                 this._hoveredTarget = null;
             }
             return target;
@@ -198,9 +198,9 @@ Nube.prototype.addWords = function (callback) {
 
         return [data, index - 1];
     }, {
-        args: [data, data.length - 1],
-        complete: callback,
-        step: self.onStep || function () {
+        args:[data, data.length - 1],
+        complete:callback,
+        step:self.onStep || function () {
         }
     });
 };
@@ -235,13 +235,13 @@ Nube.prototype.createWord = function (word, scale, record) {
     angle = this.allowRotated ? (Math.random() > .5 ? 0 : -90) : 0;
 
     fabricObject = new fabric.Text(word, {
-        fontFamily: this.pickFontFamily(),
-        fontSize: record.fontSize || this.pickFontSizeQuadratic(scale),
-        fill: this.pickColor(),
-        left: this.width / 2,
-        top: this.height / 2,
-        angle: angle,
-        selectable: this.interactive || this.clickable
+        fontFamily:this.pickFontFamily(),
+        fontSize:record.fontSize || this.pickFontSizeQuadratic(scale),
+        fill:this.pickColor(),
+        left:this.width / 2,
+        top:this.height / 2,
+        angle:angle,
+        selectable:this.interactive || this.clickable
     });
 
     fabricObject.hasControls = this.interactive;
@@ -318,10 +318,10 @@ Nube.prototype.getFabricObjectCoords = function (fabricObject) {
     margin = this.setWordMargin(fabricObject.get('text'), fabricObject.get('fontSize'), fabricObject);
 
     return {
-        x1: left - width / 2 - margin.left,
-        y1: top - height / 2 - margin.top,
-        x2: left + width / 2 + margin.right,
-        y2: top + height / 2 + margin.bottom
+        x1:left - width / 2 - margin.left,
+        y1:top - height / 2 - margin.top,
+        x2:left + width / 2 + margin.right,
+        y2:top + height / 2 + margin.bottom
     };
 };
 
@@ -337,8 +337,8 @@ Nube.prototype.setWordPosition = function (fabricText) {
         top = Nube.random(centerY - seedY, centerY + seedY);
 
         fabricText.set({
-            left: left,
-            top: top
+            left:left,
+            top:top
         });
 
         seedY += this.stepY;
@@ -378,10 +378,10 @@ Nube.prototype.toDataURL = function () {
     p.allowRotated = false;
     p.setWordMargin = function (text, fontSize, fabricObject) {
         return {
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0
+            top:0,
+            right:0,
+            bottom:0,
+            left:0
         };
     };
     p.filter = function (word, count) {
