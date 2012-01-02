@@ -1,5 +1,7 @@
 ### nube.js
 
+<img src="https://github.com/Aijoona/nube/raw/master/examples/eloquent_javascript.png" width="450" />
+
 <a href="http://nubejs.aijoona.com/">nube.js</a> is a small library for generating word clouds using canvas via fabric.js and Cufon.
 
 ### See
